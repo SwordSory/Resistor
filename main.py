@@ -4,9 +4,11 @@ import os
 
 pygame.init()
 
-#Function_to_extract_path
+
+# Function_to_extract_path
 def assets_pather(filename):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), filename)
+
 
 width, height = 1080, 542
 screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
@@ -18,96 +20,108 @@ clock = pygame.time.Clock()
 
 background = pygame.image.load(assets_pather("Assets/display.png"))
 
-#Table
-colors = [("Black", 1, 0, 250),
-          ("Brown", 10, 1, 100),
-          ("Red", 100, 2, 50),
-          ((255, 165, 0), 1000, 0, 15), #Orange
-          ("Yellow", 10000, 0, 25),
-          ("Green", 100000, 0.5, 20),
-          ("Blue", 1000000, 0.25, 10),
-          ((238, 130, 238), 0, 0.1, 5), #Viloet
-          ("Gray", 0, 0, 1),
-          ("White", 0, 0, 0),
-          ((255, 215, 0), 0, 5, 0), #Gold
-          ((224, 224, 224), 0, 10, 0), #Silver
-          ((250, 190, 142), 0, 0, 0)] #No Color
+# Table
+colors = [
+    ("Black", 1, 0, 250),
+    ("Brown", 10, 1, 100),
+    ("Red", 100, 2, 50),
+    ((255, 165, 0), 1000, 0, 15),  # Orange
+    ("Yellow", 10000, 0, 25),
+    ("Green", 100000, 0.5, 20),
+    ("Blue", 1000000, 0.25, 10),
+    ((238, 130, 238), 0, 0.1, 5),  # Viloet
+    ("Gray", 0, 0, 1),
+    ("White", 0, 0, 0),
+    ((255, 215, 0), 0, 5, 0),  # Gold
+    ((224, 224, 224), 0, 10, 0),  # Silver
+    ((250, 190, 142), 0, 0, 0),
+]  # No Color
 
-#Corresponding_Band
+# Corresponding_Band
 initial_values = [8, 3, 5, 6, 10, 3]
 
-#Clicking_Rects
+# Clicking_Rects
 selection_rectangles = [
     [pygame.Rect(4, 297, 164, 43), False],
     [pygame.Rect(176, 296, 166, 43), False],
     [pygame.Rect(349, 297, 164, 43), False],
     [pygame.Rect(522, 297, 188, 42), False],
     [pygame.Rect(719, 297, 174, 42), False],
-    [pygame.Rect(905, 297, 162, 43), False]
+    [pygame.Rect(905, 297, 162, 43), False],
 ]
 
-#Rects_for_diagram
+# Rects_for_diagram
 figure_rectangles = [
     (214, 23, 25, 144),
     (285, 28, 25, 134),
     (338, 28, 25, 134),
     (391, 28, 25, 134),
     (462, 28, 25, 134),
-    (534, 23, 25, 144)
+    (534, 23, 25, 144),
 ]
 
 
-#Rects_for_Choosing_color
+# Rects_for_Choosing_color
 
-band1_checker_rects = [[pygame.Rect(825, 0, 200, 20), 0],
-                      [pygame.Rect(825, 20, 200, 20), 1],
-                      [pygame.Rect(825, 40, 200, 20), 2],
-                      [pygame.Rect(825, 60, 200, 20), 3],
-                      [pygame.Rect(825, 80, 200, 20), 4],
-                      [pygame.Rect(825, 100, 200, 20), 5],
-                      [pygame.Rect(825, 120, 200, 20), 6],
-                      [pygame.Rect(825, 140, 200, 20), 7],
-                      [pygame.Rect(825, 160, 200, 20), 8],
-                      [pygame.Rect(825, 180, 200, 20), 9],
-                      [pygame.Rect(825, 200, 200, 20), 12]]
+band1_checker_rects = [
+    [pygame.Rect(825, 0, 200, 20), 0],
+    [pygame.Rect(825, 20, 200, 20), 1],
+    [pygame.Rect(825, 40, 200, 20), 2],
+    [pygame.Rect(825, 60, 200, 20), 3],
+    [pygame.Rect(825, 80, 200, 20), 4],
+    [pygame.Rect(825, 100, 200, 20), 5],
+    [pygame.Rect(825, 120, 200, 20), 6],
+    [pygame.Rect(825, 140, 200, 20), 7],
+    [pygame.Rect(825, 160, 200, 20), 8],
+    [pygame.Rect(825, 180, 200, 20), 9],
+    [pygame.Rect(825, 200, 200, 20), 12],
+]
 
-band2_3_checker_rects = [[pygame.Rect(825, 0, 200, 20), 0],
-                      [pygame.Rect(825, 20, 200, 20), 1],
-                      [pygame.Rect(825, 40, 200, 20), 2],
-                      [pygame.Rect(825, 60, 200, 20), 3],
-                      [pygame.Rect(825, 80, 200, 20), 4],
-                      [pygame.Rect(825, 100, 200, 20), 5],
-                      [pygame.Rect(825, 120, 200, 20), 6],
-                      [pygame.Rect(825, 140, 200, 20), 7],
-                      [pygame.Rect(825, 160, 200, 20), 8],
-                      [pygame.Rect(825, 180, 200, 20), 9]]
+band2_3_checker_rects = [
+    [pygame.Rect(825, 0, 200, 20), 0],
+    [pygame.Rect(825, 20, 200, 20), 1],
+    [pygame.Rect(825, 40, 200, 20), 2],
+    [pygame.Rect(825, 60, 200, 20), 3],
+    [pygame.Rect(825, 80, 200, 20), 4],
+    [pygame.Rect(825, 100, 200, 20), 5],
+    [pygame.Rect(825, 120, 200, 20), 6],
+    [pygame.Rect(825, 140, 200, 20), 7],
+    [pygame.Rect(825, 160, 200, 20), 8],
+    [pygame.Rect(825, 180, 200, 20), 9],
+]
 
-multiplier_checker_rects = [[pygame.Rect(825, 0, 200, 20), 0],
-                      [pygame.Rect(825, 20, 200, 20), 1],
-                      [pygame.Rect(825, 40, 200, 20), 2],
-                      [pygame.Rect(825, 60, 200, 20), 3],
-                      [pygame.Rect(825, 80, 200, 20), 4],
-                      [pygame.Rect(825, 100, 200, 20), 5],
-                      [pygame.Rect(825, 120, 200, 20), 6]]
+multiplier_checker_rects = [
+    [pygame.Rect(825, 0, 200, 20), 0],
+    [pygame.Rect(825, 20, 200, 20), 1],
+    [pygame.Rect(825, 40, 200, 20), 2],
+    [pygame.Rect(825, 60, 200, 20), 3],
+    [pygame.Rect(825, 80, 200, 20), 4],
+    [pygame.Rect(825, 100, 200, 20), 5],
+    [pygame.Rect(825, 120, 200, 20), 6],
+]
 
-tolerance_checker_rects = [[pygame.Rect(825, 0, 200, 20), 1],
-                      [pygame.Rect(825, 20, 200, 20), 2],
-                      [pygame.Rect(825, 40, 200, 20), 5],
-                      [pygame.Rect(825, 60, 200, 20), 6],
-                      [pygame.Rect(825, 80, 200, 20), 7],
-                      [pygame.Rect(825, 100, 200, 20), 10],
-                      [pygame.Rect(825, 120, 200, 20), 11]]
+tolerance_checker_rects = [
+    [pygame.Rect(825, 0, 200, 20), 1],
+    [pygame.Rect(825, 20, 200, 20), 2],
+    [pygame.Rect(825, 40, 200, 20), 5],
+    [pygame.Rect(825, 60, 200, 20), 6],
+    [pygame.Rect(825, 80, 200, 20), 7],
+    [pygame.Rect(825, 100, 200, 20), 10],
+    [pygame.Rect(825, 120, 200, 20), 11],
+]
 
-temp_coef_checker_rects = [[pygame.Rect(825, 0, 200, 20), 0],
-                      [pygame.Rect(825, 20, 200, 20), 1],
-                      [pygame.Rect(825, 40, 200, 20), 2],
-                      [pygame.Rect(825, 60, 200, 20), 3],
-                      [pygame.Rect(825, 80, 200, 20), 4],
-                      [pygame.Rect(825, 100, 200, 20), 5],
-                      [pygame.Rect(825, 120, 200, 20), 6],
-                      [pygame.Rect(825, 140, 200, 20), 7],
-                      [pygame.Rect(825, 160, 200, 20), 8],
-                      [pygame.Rect(825, 180, 200, 20), 12]]
+temp_coef_checker_rects = [
+    [pygame.Rect(825, 0, 200, 20), 0],
+    [pygame.Rect(825, 20, 200, 20), 1],
+    [pygame.Rect(825, 40, 200, 20), 2],
+    [pygame.Rect(825, 60, 200, 20), 3],
+    [pygame.Rect(825, 80, 200, 20), 4],
+    [pygame.Rect(825, 100, 200, 20), 5],
+    [pygame.Rect(825, 120, 200, 20), 6],
+    [pygame.Rect(825, 140, 200, 20), 7],
+    [pygame.Rect(825, 160, 200, 20), 8],
+    [pygame.Rect(825, 180, 200, 20), 12],
+]
 
 
 active_color = (255, 102, 102)
@@ -128,7 +142,7 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
 
-            if not all_status and event.button == 1: #activating_Bands
+            if not all_status and event.button == 1:  # activating_Bands
 
                 if selection_rectangles[0][0].collidepoint(mouse_pos):
                     selection_rectangles[0][1] = True
@@ -154,7 +168,7 @@ while running:
                     selection_rectangles[5][1] = True
                     all_status = True
 
-            #Working_with_activated_bands
+            # Working_with_activated_bands
             if selection_rectangles[0][1] and event.button == 1:
                 for rect, i in band1_checker_rects:
                     if rect.collidepoint(mouse_pos):
@@ -203,14 +217,17 @@ while running:
                         all_status = False
                         Calculate = True
 
-
     screen.blit(background, (0, 0))
 
     if Calculate:
         if initial_values[0] != 12:
-            resistance = (initial_values[0] * 100 + initial_values[1] * 10 + initial_values[2]) * colors[initial_values[3]][1]
+            resistance = (
+                initial_values[0] * 100 + initial_values[1] * 10 + initial_values[2]
+            ) * colors[initial_values[3]][1]
         else:
-            resistance = (0 * 100 + initial_values[1] * 10 + initial_values[2]) * colors[initial_values[3]][1]
+            resistance = (
+                0 * 100 + initial_values[1] * 10 + initial_values[2]
+            ) * colors[initial_values[3]][1]
         tolerance = colors[initial_values[4]][2]
 
         if initial_values[5] == 12:
@@ -229,7 +246,6 @@ while running:
         else:
             pygame.draw.rect(screen, passive_color, rect, 5)
 
-
     for i, rect in enumerate(figure_rectangles):
         color = colors[initial_values[i]][0]
         pygame.draw.rect(screen, color, rect)
@@ -242,8 +258,7 @@ while running:
     screen.blit(tolerance_render, (200, 440))
     screen.blit(temp_coef_render, (200, 500))
 
-
-    #Showing_Value_changer_rects
+    # Showing_Value_changer_rects
     if selection_rectangles[0][1]:
         for rect, i in band1_checker_rects:
             pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))
@@ -251,29 +266,28 @@ while running:
 
     elif selection_rectangles[1][1]:
         for rect, i in band2_3_checker_rects:
-            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))  
-        pygame.draw.rect(screen, passive_color, (825, 0, 200, 200), 5)      
+            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))
+        pygame.draw.rect(screen, passive_color, (825, 0, 200, 200), 5)
 
     elif selection_rectangles[2][1]:
         for rect, i in band2_3_checker_rects:
-            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))  
-        pygame.draw.rect(screen, passive_color, (825, 0, 200, 200), 5) 
+            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))
+        pygame.draw.rect(screen, passive_color, (825, 0, 200, 200), 5)
 
     elif selection_rectangles[3][1]:
         for rect, i in multiplier_checker_rects:
-            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))  
-        pygame.draw.rect(screen, passive_color, (825, 0, 200, 140), 5) 
+            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))
+        pygame.draw.rect(screen, passive_color, (825, 0, 200, 140), 5)
 
     elif selection_rectangles[4][1]:
         for rect, i in tolerance_checker_rects:
-            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))  
-        pygame.draw.rect(screen, passive_color, (825, 0, 200, 140), 5) 
+            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))
+        pygame.draw.rect(screen, passive_color, (825, 0, 200, 140), 5)
 
     elif selection_rectangles[5][1]:
         for rect, i in temp_coef_checker_rects:
-            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))  
-        pygame.draw.rect(screen, passive_color, (825, 0, 200, 200), 5) 
-
+            pygame.draw.rect(screen, colors[i][0], pygame.Rect(rect))
+        pygame.draw.rect(screen, passive_color, (825, 0, 200, 200), 5)
 
     pygame.display.flip()
     clock.tick(60)
